@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Counter Example</title>
+  <h1>hrs x 20 + mins x 1/3</h1>
+  <script>
+    // Function to update the count
+    function updateCount(value) {
+      var count = parseInt(localStorage.getItem("count")) || 0; // Get the count from local storage, default to 0 if not found
+
+      // Update the count based on the selected value
+      count += value;
+
+      // Store the updated count in local storage
+      localStorage.setItem("count", count);
+
+      // Display the updated count
+      document.getElementById("count").innerHTML = count;
+    }
+
+    // Function to reset the count
+    function resetCount() {
+      localStorage.removeItem("count"); // Remove the count from local storage
+      document.getElementById("count").innerHTML = 0; // Set the count back to 0
+    }
+
+    // Initialize the count on page load
+    window.onload = function() {
+      var count = parseInt(localStorage.getItem("count")) || 0; // Get the count from local storage, default to 0 if not found
+      document.getElementById("count").innerHTML = count; // Display the count
+    };
+  </script>
+</head>
+<body>
+  <h1>Counter</h1>
+  <p>Count: <span id="count"></span></p>
+
+  <button onclick="updateCount(1)">Add 1</button>
+  <button onclick="updateCount(-1)">Subtract 1</button>
+  <br>
+  <button onclick="updateCount(10)">Add 10</button>
+  <button onclick="updateCount(-10)">Subtract 10</button>
+  <br>
+  <button onclick="updateCount(20)">Add 20</button>
+  <button onclick="updateCount(-20)">Subtract 20</button>
+  <br>
+  <button onclick="resetCount()">Reset</button>
+</body>
+</html>
